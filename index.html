@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeta-Drift: Marine Biogeography Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <header>
+            <h1>🧬 ZETA-DRIFT</h1>
+            <p>Marine Macroevolution & Biogeography Simulator</p>
+        </header>
+
+        <!-- SETUP SCREEN -->
+        <div id="setup-screen" class="card">
+            <h2>Select Your Ancestral Marine Lineage</h2>
+            <p class="subtitle">Your choice determines your starting adaptation and structural limitations.</p>
+            <div class="lineage-container">
+                <div class="lineage-card" id="select-teleost">
+                    <h3>🐟 Teleost Fish</h3>
+                    <p>High base dispersal speed. Starts with <strong>Active Swimming</strong>.</p>
+                </div>
+                <div class="lineage-card" id="select-crustacean">
+                    <h3>🦐 Crustacean</h3>
+                    <p>High environmental resilience. Starts with <strong>Chitinous Armor</strong>.</p>
+                </div>
+                <div class="lineage-card" id="select-mollusk">
+                    <h3>🐚 Benthic Mollusk</h3>
+                    <p>Excellent defense, low mobility. Starts with <strong>Calcium Carbonate Shell</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN GAME SCREEN -->
+        <div id="game-screen" class="hidden">
+            <!-- HUD / STATS BAR -->
+            <div id="hud">
+                <div class="stat">🧬 Lineage: <span id="display-lineage" class="value">-</span></div>
+                <div class="stat">⭐ Evolution Points: <span id="display-points" class="value">5</span></div>
+                <div class="stat">⏳ Geological Epoch: <span id="display-epoch" class="value">1/5</span></div>
+                <div class="stat">🌊 Zeta Diversity: <span id="display-zeta" class="value">0%</span></div>
+            </div>
+
+            <div class="game-layout">
+                <!-- LEFT PANEL: ADAPTATION & DISPERSAL PANEL -->
+                <div class="panel-left">
+                    <div class="card">
+                        <h3>🧬 Mutate Adaptive Traits</h3>
+                        <p class="small-text">Spend <strong>2 Evolution Points</strong> to unlock a trait. Adaptations allow you to bypass specific basin filters.</p>
+                        <div id="traits-list">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <div class="card space-top">
+                        <h3>🌐 Dispersal Strategy</h3>
+                        <p class="small-text">Select up to <strong>2 basins</strong> to colonize this epoch. Colonization costs 1 Evolution Point per basin.</p>
+                        <div id="basins-list">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                        <button id="btn-end-turn" class="btn-primary">Execute Drifting Phase</button>
+                    </div>
+                </div>
+
+                <!-- RIGHT PANEL: GAME MAP & LOGS -->
+                <div class="panel-right">
+                    <div class="card map-card">
+                        <h3>🗺️ Ocean Basins Map</h3>
+                        <div id="map-visual">
+                            <!-- Populated dynamically with active/inactive state of basins -->
+                        </div>
+                    </div>
+
+                    <div class="card space-top log-card">
+                        <h3>📜 Evolutionary Research Log</h3>
+                        <div id="game-log"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- END SCREEN -->
+        <div id="end-screen" class="hidden card text-center">
+            <h2>🌍 Simulation Concluded</h2>
+            <p id="end-reason"></p>
+            <div class="score-box">
+                <p>Final Zeta Diversity Index: <strong id="end-zeta" class="value-highlight">0%</strong></p>
+                <p>Established Ecological Colonies: <strong id="end-colonies" class="value-highlight">0</strong></p>
+            </div>
+            <p id="end-feedback"></p>
+            <button id="btn-restart" class="btn-primary">Restart Evolutionary Sequence</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
